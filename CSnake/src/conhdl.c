@@ -31,18 +31,6 @@ void clrline() {
 		width = csbi.srWindow.Right - csbi.srWindow.Left + 1;
 
 	printf("\r%*s\r", width - 1, "");
-
-	//std::cout << "\r" << std::string(width - 1, ' ') << "\r";
-	
-	//HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-	//COORD coord = { 0, 0 };
-	//DWORD written;
-	//CONSOLE_SCREEN_BUFFER_INFO csbi;
-	//GetConsoleScreenBufferInfo(hConsole, &csbi);
-	//DWORD size = csbi.dwSize.X;
-	//FillConsoleOutputCharacter(hConsole, ' ', size, coord, &written);
-	//FillConsoleOutputAttribute(hConsole, csbi.wAttributes, size, coord, &written);
-	//SetConsoleCursorPosition(hConsole, coord);
 }
 
 void putc_at(char c, int x, int y, enum Color color) {
