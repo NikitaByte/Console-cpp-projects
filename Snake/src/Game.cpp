@@ -1,4 +1,4 @@
-#include "Game.hpp"
+﻿#include "Game.hpp"
 #include <conio.h>
 
 // Constructor
@@ -7,18 +7,21 @@ Game::Game()
 	initGame();
 }
 
+Game::~Game()
+{
+	snake.clear();
+}
+
 // Public methods
 void Game::run()
 {
 	while (running) {
 		if (gameOver) {
 			displayGameOver();
-
 			setCursorPosition(0, HEIGHT + 2);
 			clearConsoleRow();
-			system("pause"); // Wait for user input
-
-			system("cls"); // Clear console
+			system("pause");
+			system("cls");
 			initGame();
 			continue;
 		}
@@ -120,7 +123,7 @@ void Game::createFood()
 		}
 	}
 
-	replaceCharAt(foodPos.x, foodPos.y, '*', Color::RED);
+	drawFood();
 }
 
 void Game::drawGameBoard()
@@ -129,8 +132,8 @@ void Game::drawGameBoard()
 		for (size_t x = 0; x < WIDTH; ++x) {
 			if (x == 0 || x == WIDTH - 1 ||
 				y == 0 || y == HEIGHT - 1)
-				std::cout << '#'; // Draw walls
-			else std::cout << ' ';
+				std::cout << '#';	// Draw walls
+			else std::cout << ' ';	// Draw empty space
 		}
 		std::cout << '\n';
 	}
@@ -147,7 +150,7 @@ void Game::drawSnake()
 
 void Game::drawFood()
 {
-	replaceCharAt(foodPos.x, foodPos.y, '*', Color::RED);
+	replaceCharAt(foodPos.x, foodPos.y, 'd', Color::RED);
 }
 
 void Game::displayScore()
@@ -183,7 +186,6 @@ void Game::clearConsoleRow()
 
 void Game::replaceCharAt(short x, short y, char c, Color color)
 {
-	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	DWORD written;
 	COORD position = { x, y };
 	WORD col = static_cast<WORD>(color);
@@ -197,6 +199,7 @@ void Game::checkGameOver()
 	if (snake[0].x <= 0 || snake[0].x >= WIDTH - 1 ||
 		snake[0].y <= 0 || snake[0].y >= HEIGHT - 1) {
 		gameOver = true;
+		return;
 	}
 
 	for (size_t i = 1; i < snake.size(); ++i) {

@@ -36,6 +36,7 @@ class Game {
 public:
 	// Constructor
 	Game();
+	~Game();
 
 	// Main game loop
 	void run();
