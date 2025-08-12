@@ -1,13 +1,13 @@
 #include "vector2.h"
 
-vec2 vec2_add(vec2 a, vec2 b) {
-	return (vec2) { a.x + b.x, a.y + b.y };
+Vec2 vec2_add(Vec2 a, Vec2 b) {
+	return (Vec2) { a.x + b.x, a.y + b.y };
 }
 
-vec2 vec2_sub(vec2 a, vec2 b) {
-	return (vec2) { a.x - b.x, a.y - b.y };
+Vec2 vec2_sub(Vec2 a, Vec2 b) {
+	return (Vec2) { a.x - b.x, a.y - b.y };
 }
 
-vec2 vec2_mul_scalar(vec2 a, int scalar) {
-	return (vec2) { a.x* scalar, a.y* scalar };
+Vec2 vec2_mul_scalar(Vec2 a, int scalar) {
+	return (Vec2) { a.x* scalar, a.y* scalar };
 }

@@ -1,12 +1,12 @@
 #ifndef VECTOR_H
 #define VECTOR_H
 
-typedef struct {
+typedef struct Vec2 {
 	int x, y;
-} vec2;
+} Vec2;
 
-vec2 vec2_add(vec2 a, vec2 b);
-vec2 vec2_sub(vec2 a, vec2 b);
-vec2 vec2_mul_scalar(vec2 a, int scalar);
+Vec2 vec2_add(Vec2 a, Vec2 b);
+Vec2 vec2_sub(Vec2 a, Vec2 b);
+Vec2 vec2_mul_scalar(Vec2 a, int scalar);
 
 #endif // VECTOR_H

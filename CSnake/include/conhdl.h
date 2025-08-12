@@ -3,7 +3,7 @@
 
 #include <Windows.h>
 
-enum Color {
+typedef enum Color {
 	BLACK = 0,
 	WHITE = FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY,
 	BLUE = FOREGROUND_BLUE,
@@ -12,12 +12,12 @@ enum Color {
 	MAGENTA = FOREGROUND_RED | FOREGROUND_BLUE | FOREGROUND_INTENSITY,
 	CYAN = FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_INTENSITY,
 	YELLOW = FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_INTENSITY
-};
+} Color;
 
 void gotoxy(int x, int y);
-void set_color(enum Color color);
+void set_color(Color color);
 void clrcon();
 void clrline();
-void putc_at(char c, int x, int y, enum Color color);
+void putc_at(char c, int x, int y, Color color);
 
 #endif // CONHDL_H

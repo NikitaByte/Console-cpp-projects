@@ -3,25 +3,26 @@
 
 #include "vector2.h"
 
-typedef struct {
-	vec2* data;
+typedef struct Deque {
+	Vec2* data;
 	int length;
 	int capacity;
-} deque;
+} Deque;
 
-void init_deque(deque* d, int capacity);
-void free_deque(deque* d);
+void init_deque(Deque* d, int capacity);
+Deque* create_deque(int capacity);
+void free_deque(Deque* d);
 
-void push_front(deque* d, vec2 element);
-void push_back(deque* d, vec2 element);
+void push_front(Deque* d, Vec2 element);
+void push_back(Deque* d, Vec2 element);
 
-void pop_front(deque* d);
-void pop_back(deque* d);
+void pop_front(Deque* d);
+void pop_back(Deque* d);
 
-vec2 front(const deque* d);
-vec2 back(const deque* d);
+Vec2 get_front(const Deque* d);
+Vec2 get_back(const Deque* d);
 
-int is_empty(const deque* d);
-void clear_deque(deque* d);
+int is_empty(const Deque* d);
+void clear_deque(Deque* d);
 
 #endif // !DEQUE_H

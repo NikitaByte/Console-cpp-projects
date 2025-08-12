@@ -6,12 +6,13 @@ void gotoxy(int x, int y) {
 	SetConsoleCursorPosition(hConsole, coord);
 }
 
-void set_color(enum Color color) {
+void set_color(Color color) {
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleTextAttribute(hConsole, color);
 }
 
 void clrcon() {
+#ifdef _WIN32
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	COORD coord = { 0, 0 };
 	DWORD written;
@@ -21,6 +22,9 @@ void clrcon() {
 	FillConsoleOutputCharacter(hConsole, ' ', size, coord, &written);
 	FillConsoleOutputAttribute(hConsole, csbi.wAttributes, size, coord, &written);
 	SetConsoleCursorPosition(hConsole, coord);
+#else
+	printf("\033[H\033[J");
+#endif
 }
 
 void clrline() {
@@ -33,7 +37,7 @@ void clrline() {
 	printf("\r%*s\r", width - 1, "");
 }
 
-void putc_at(char c, int x, int y, enum Color color) {
+void putc_at(char c, int x, int y, Color color) {
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	DWORD written;
 	COORD position = { x, y };
