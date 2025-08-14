@@ -1,5 +1,6 @@
 #include <iostream>
 #include "LinkedList.h"
+#include "Vector2.h"
 
 int main() {
     LinkedList<int> list;
@@ -16,4 +17,6 @@ int main() {
     list.clear();
 
     std::cout << "List after clear: " << list.toString() << std::endl;
+
+    Vector2<int> vec;
 }
